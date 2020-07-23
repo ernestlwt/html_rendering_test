@@ -3,7 +3,7 @@ from flask_cors import CORS
 import json
 
 from app.config import Config
-from app.ai import Classifier
+from app.classifier import Classifier
 from PIL import Image
 import numpy as np
 import io
@@ -54,6 +54,11 @@ def create_app():
     @app.route('/')
     def index():
         return "Hello World!"
+
+    @app.route('/load')
+    def load_model():
+        classifier.load()
+        return "loaded", 200
 
     @app.route('/predict_result', methods=['POST'])
     def predict_result():

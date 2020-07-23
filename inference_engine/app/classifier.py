@@ -7,6 +7,14 @@ class Classifier(object):
     def __init__(self):
         self.model = ResNet50(weights='imagenet')
 
+    def load(self):
+        img_path = 'app/elephant.jpg'
+        img = image.load_img(img_path, target_size=(224, 224))
+        x = image.img_to_array(img)
+        x = np.expand_dims(x, axis=0)
+        x = preprocess_input(x)
+        preds = self.model.predict(x)
+
     def predict(self, image):
         x = preprocess_input(image)
         preds = self.model.predict(image)

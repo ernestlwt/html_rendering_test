@@ -1,6 +1,24 @@
-<h1>Results</h1>
-<img src="data:image/jpg/base64,{{image}}"/>
-{% for pred in predictions %}
-<p>Prediction: {{pred['prediction']}}</p>
-<p>Probability: {{pred['probability']}}</p>
-{% endfor %}
+<div class="row">
+    <div class="col">
+        <h1>Prediction</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-4">
+        <img src="data:image/jpg;base64,{{image}}" style="width:100%;"/>
+    </div>
+    <div class="col-8">
+        <div class="container">
+            {% for pred in predictions %}
+            <div class="row">
+                <div class="col">
+                    <p>Prediction: {{pred['prediction']}}</p>
+                </div>
+                <div class="col">
+                    <p>Probability: {{pred['probability']}}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
